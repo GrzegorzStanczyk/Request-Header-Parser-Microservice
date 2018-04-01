@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 
 app.get("/", function (req, res) {
-  const ip = req.header('x-forwarded-for').split(',')[0];
-  const lang = req.header('accept-language').split(',')[0];
+  const ipaddress = req.header('x-forwarded-for').split(',')[0];
+  const language = req.header('accept-language').split(',')[0];
   const userAgent = req.header('user-agent');
   const software = userAgent.slice(userAgent.indexOf('(') + 1, userAgent.indexOf(')'));
   res.json({
-    'ipaddress': ip,
-    'language': lang,
-    'software': software
+    ipaddress,
+    language,
+    software
   })
 });
 
